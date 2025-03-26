@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>🌱 Predict Your Crop</h2>
+        
+        <form action="/" method="post">
+            <label for="fym">Enter FYM (kg/ha):</label>
+            <input type="number" name="fym" step="0.01" placeholder="e.g., 50.5" required>
+
+            <label for="n">Enter Nitrogen (N) Value:</label>
+            <input type="number" name="n" step="0.01" placeholder="e.g., 23.4" required>
+
+            <label for="p2o5">Enter Phosphorus (P₂O₅) Value:</label>
+            <input type="number" name="p2o5" step="0.01" placeholder="e.g., 15.6" required>
+
+            <label for="k2o">Enter Potassium (K₂O) Value:</label>
+            <input type="number" name="k2o" step="0.01" placeholder="e.g., 10.2" required>
+
+            <label for="ph">Enter Soil pH Value:</label>
+            <input type="number" name="ph" step="0.01" placeholder="e.g., 6.5" required>
+
+            <label for="season">Select Season:</label>
+            <select name="season" required>
+                <option value="Summer">Summer</option>
+                <option value="Rainy">Rainy</option>
+                <option value="Winter">Winter</option>
+                <option value="Early Winter">Early Winter</option>
+                <option value="Early Spring">Early Spring</option>
+            </select>
+
+            <button type="submit">🚜 Predict Crop</button>
+        </form>
+
+        {% if crop %}
+        <div class="prediction">
+            🌾 Recommended Crop: <strong>{{ crop }}</strong>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
